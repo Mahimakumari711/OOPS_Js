@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Driver {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter your full name: ");
+        String name = sc.nextLine().trim();
+
+        String initials = "";
+        String[] words = name.split(" ");
+
+        for (String w : words) {
+            if (!w.isEmpty()) {
+                initials += Character.toUpperCase(w.charAt(0)) + ".";
+            }
+        }
+
+        System.out.println("Your initials: " + initials);
+    }
+}
