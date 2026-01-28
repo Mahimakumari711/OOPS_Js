@@ -1,0 +1,9 @@
+class main  
+{ 
+  public static void main ( String  [ ]   args ) 
+  { 
+    double x = 10.25 , y = 20.55 ; 
+    double res = x+y ;  
+    system.out.println(“ Addition of  “+x+” and “+y+” is ”  +res); 
+  } 
+} 
