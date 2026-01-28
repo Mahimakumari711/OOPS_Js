@@ -1,0 +1,12 @@
+  class main  
+{ 
+  public static void main ( String [ ]   args ) 
+  { 
+    scanner sc = new scanner ( System . in ); 
+    system.out.println(“ Enter the tow floating point numbers : ”); 
+    double x = sc . next double ( ) ; 
+    double y = sc .next double ( ) ; 
+    double res = x+y ; 
+    system.out.println(“ The sum of ” “+x+” and “+y+” is ” +res); 
+  } 
+} 
