@@ -1,0 +1,10 @@
+class main  
+{ 
+  public static void main ( String [ ]   args ) 
+  { 
+    system.out.println(“ Name : Mahima Kumari ”); 
+    system.out.println(“ Branch : CSE ”); 
+    system.out.println(“ Roll No. : 24 ”); 
+    system.out.println(“ College : XYZ University”); 
+  } 
+} 
