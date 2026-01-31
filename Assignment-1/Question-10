@@ -1,0 +1,17 @@
+import java.util.scanner 
+class main  
+{ 
+  public static void main ( String [ ]     args )  
+  { 
+    scanner sc = new scanner ( system . in ) ; 
+    system.out.println(“ Enter the  numbers : ”);  
+    int num = sc . next int ( ) ; 
+    int sum = 0 ; 
+    while ( num != 0 )  
+    { 
+      sum += num % 10 ;  
+      num /= 10 ; 
+    } 
+    system.out.println(“ The sum of the digits is ” +sum ); 
+  } 
+} 
