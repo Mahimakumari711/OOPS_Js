@@ -1,0 +1,16 @@
+ import java.util.scanner ; 
+class main  
+{ 
+  public static void main ( String [ ]    args )  
+  { 
+    scanner sc = new  scanner ( system . in ) ; 
+    system.out.println(“ Enter the time in seconds : ”); 
+    int seconds = sc . next  int ( ) ; 
+    int hours = seconds / 3600 ; 
+    second % = 3600 ; 
+    int minutes = second / 60 ; 
+    second % = 60 ; 
+    system.out.println( hours + “hours : ” +minutes + “minutes :” +seconds+  
+    “seconds”); 
+  } 
+} 
