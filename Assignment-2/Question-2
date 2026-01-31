@@ -1,0 +1,64 @@
+import java.util.Scanner; 
+class Studentmarks  
+{ 
+  public double[ ] marks ; 
+  public studentmarks ( double[ ] marks ) 
+  { 
+    this.marks = marks ; 
+  } 
+  public double calaverage( ) 
+  { 
+    double sum = 0 ; 
+    for (double mark : marks) 
+    {  
+      sum += mark ; 
+    } 
+    return sum / marks.length; 
+  } 
+  public char grade ( )  
+  { 
+    double avg = calaverage( ); 
+    if (avg >= 90)  
+    { 
+      return 'O' ;    
+    } 
+    else if (avg >= 80) 
+    { 
+      return ‘E’ ; 
+    } 
+    else if (avg >= 70) 
+    { 
+      return ‘A’ ; 
+    } 
+    else if (avg >= 60) 
+    { 
+      return ‘B’ ; 
+    } 
+    else if (avg >= 50) 
+    { 
+      return ‘C’ ; 
+    } 
+    else 
+    {  
+      return ‘F’ ; 
+    } 
+  }
+}                        
+public class Main 
+{ 
+  public static void main ( string[ ]  args) 
+  {  
+    Scanner scanner = new Scanner(System.in) ; 
+    double[ ] marks = new double[4] ; 
+    System.out.println("Enter marks of four subjects: "); 
+    for (int i = 0; i < 4; i++) 
+    { 
+      System.out.println("Subject " + (i + 1) + ": ") ; 
+      marks[ i ] = Scanner.nextDouble( ) ; 
+    } 
+    student student = new student( marks ) ; 
+    double average = student.calaverage( ) ; 
+    char grade = student.grade( ); 
+    System.out.println("Grade: " + grade); 
+  }                  
+}
