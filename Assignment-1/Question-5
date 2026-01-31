@@ -1,0 +1,20 @@
+ import java.util.scanner ;  
+class main  
+{ 
+  public static void main ( string [ ]   args ) 
+  { 
+    scanner sc = new scanner ( system . in ) ; 
+    system.out.println(“ Enter the number ”); 
+ 
+    int num = sc . Next int ( ) ; 
+                                      
+    if (num % 2 == 0 )  
+    { 
+      system.out.println( num + “ is even number ”); 
+    } 
+    else 
+    { 
+      system.out.println(num + “ is odd nuber ”); 
+    } 
+  } 
+} 
