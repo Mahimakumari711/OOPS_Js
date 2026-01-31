@@ -1,0 +1,18 @@
+import java.util.scanner ; 
+class main 
+{ 
+   public static void main ( String [ ]   args ) 
+     { 
+          scanner sc = new scanner ( system . In ) ; 
+          system.out.println(“ Enter two number x and y : ”); 
+            
+          int x = sc . next int ( ) ; 
+          int y = sc . next int ( ) ; 
+           
+          x += y ; 
+          y = x-y ; 
+          x -= y ; 
+ 
+          system.out.println(“ After swapping x : ” +x+ “and y: ” +y ); 
+     } 
+}
