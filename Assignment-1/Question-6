@@ -1,0 +1,17 @@
+import java.util.scanner ; 
+class main  
+{ 
+  public static void main ( String [ ]   args ) 
+  { 
+    scanner sc = new scanner ( system . in ); 
+    system.out.println(“ Enter the marks in english : ”); 
+    double eng = sc.next double( ) ; 
+    system.out.println(“ Enter the marks in math : ”); 
+    double math = sc.next double( ) ; 
+    system.out.println(“ Enter the marks in science ”); 
+    double sci = sc.next double( ) ; 
+                            
+    double average = (eng + math + sci ) / 3 ; 
+    system.out.println(“ The average marks in three subject  is : ” +average ); 
+  } 
+} 
