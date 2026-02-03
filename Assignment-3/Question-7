@@ -1,0 +1,63 @@
+public class student 
+{ 
+  String sic; 
+  String name; 
+  String branch; 
+  int[] marks = new int[6];
+  public student ( String sic, String name, String branch, int[] marks)  
+  { 
+    this.sic = sic; 
+    this.name = name; 
+    this.branch = branch; 
+    this.marks = marks; 
+  } 
+  public double avg()  
+  { 
+    int sum = 0; 
+    for (int m : marks)  
+    { 
+      sum += m; 
+    } 
+    return (double) sum / marks.length; 
+  } 
+  public void display ()  
+  { 
+    System.out.println("SIC     : " + sic); 
+    System.out.println("Name    : " + name); 
+    System.out.println("Branch  : " + branch); 
+    System.out.println("Marks   : "); 
+    for (int m : marks)  
+    { 
+      System.out.println(m + " "); 
+    }
+    System.out.println(); 
+    System.out.println("Average : " + avg ( ) ) ; 
+  } 
+  public static void main ( String [] args)  
+  { 
+    if (args.length != 9)  
+    { 
+      System.out.println("Enter the student SIC , name , branch and marks of six subeject ");                                                 
+      return; 
+    } 
+    try  
+    { 
+      String sic = args[0]; 
+      String name = args[1]; 
+      String branch = args[2]; 
+      int[] marks = new int[6]; 
+      for (int i = 0; i < 6; i++)  
+      { 
+        marks[i] = Integer.parseInt(args[i + 3]); 
+      } 
+      student Student = new student(sic, name, branch, marks); 
+      Student.display(); 
+    } 
+    catch (NumberFormatException e)
+    { 
+      System.out.println("Enter the valid number."); 
+    } 
+  } 
+}
+
+// Command line : javastudent S123 Rahul CSE 78 85 90 88 76 80 
