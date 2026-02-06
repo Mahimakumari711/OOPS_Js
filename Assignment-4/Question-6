@@ -1,0 +1,61 @@
+import java.util.Scanner; 
+public class Driver 
+{ 
+  public static void main(String[ ] args) 
+  { 
+    Scanner sc = new Scanner(System.in);  
+    System.out.println("Enter number of students up to 5 "); 
+    int n = sc.nextInt( ); 
+    if (n > 5) 
+    { 
+      System.out.println("Enter only 5 student details "); 
+      n = 5; 
+    } 
+    Student[ ] s = new Student[n]; 
+    for (int i = 0; i < n; i++) 
+    { 
+      System.out.println("Enter details for Student " + (i + 1) + ":"); 
+      s[ i ] = new Student( ); 
+      s[ i ].input( ); 
+    } 
+    int maxindex = 0; 
+    for (int i = 1; i < n; i++) 
+    { 
+      if (s[ i ].CGPA > s[maxindex].CGPA)
+      { 
+        maxindex = i; 
+      } 
+    } 
+    System.out.println("Student with highest CGPA is "); 
+    s[maxindex].display( ); 
+  } 
+}
+
+class Student 
+{ 
+  int regNo; 
+  String stdName; 
+  String branch; 
+  double CGPA; 
+  public void input( ) 
+  { 
+    Scanner sc = new Scanner(System.in); 
+    System.out.println("Enter register number  "); 
+    regNo = sc.nextInt( ); 
+    sc.nextLine( ); 
+    System.out.println("Enter student name "); 
+    stdName = sc.nextLine( ); 
+    System.out.println("Enter branch "); 
+    branch = sc.nextLine( ); 
+    System.out.println("Enter CGPA "); 
+    CGPA = sc.nextDouble( ); 
+  } 
+  public void display( ) 
+  { 
+    System.out.println("Student details are "); 
+    System.out.println("Register Number: " + regNo); 
+    System.out.println("Name           : " + stdName); 
+    System.out.println("Branch         : " + branch); 
+    System.out.println("CGPA           : " + CGPA); 
+  }
+} 
