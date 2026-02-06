@@ -1,0 +1,45 @@
+import java.util.Scanner; 
+class Driver 
+{ 
+  public static void main(String[ ] args)  
+  { 
+    Complex c1 = new Complex( ); 
+    Complex c2 = new Complex( ); 
+    System.out.println("Enter first complex number:"); 
+    c1.initialise( ); 
+    System.out.println("Enter second complex number:"); 
+    c2.initialise( ); 
+    System.out.print("First Complex number: "); 
+    c1.show( ); 
+    System.out.print("Second Complex number: "); 
+    c2.show( ); 
+    Complex sum = c1.add(c2); 
+    System.out.print("Sum of the two complex numbers: "); 
+    sum.show( ); 
+  } 
+} 
+
+class Complex 
+{ 
+  int real; 
+  int imag;  
+  public void initialise( ) 
+  { 
+    Scanner sc = new Scanner(System.in); 
+    System.out.println("Enter real part of number "); 
+    real = sc.nextInt( ); 
+    System.out.println("Enter imaginary part of number "); 
+    imag = sc.nextInt( ); 
+  } 
+  public void show( ) 
+  { 
+    System.out.println(real + " + " + imag + "i"); 
+  } 
+  public Complex add(Complex c) 
+  { 
+    Complex result = new Complex( ); 
+    result.real = this.real + c.real; 
+    result.imag = this.imag + c.imag; 
+    return result; 
+  } 
+} 
