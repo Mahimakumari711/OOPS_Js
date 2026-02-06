@@ -1,0 +1,51 @@
+import java.util.Scanner; 
+class Driver 
+{ 
+  public static void main(String[ ] args) 
+  { 
+    Scanner sc = new Scanner(System.in); 
+    System.out.print("Enter number of employees: "); 
+    int n = sc.nextInt( );  
+    Employee[ ] emp = new Employee[n]; 
+    for (int i = 0; i < n; i++) 
+    { 
+      System.out.println("Enter details for employee " + (i + 1) + ":"); 
+      emp[i] = new Employee( );  
+      emp[i].getData( ); 
+    } 
+    System.out.println("Showing details of employee are "); 
+    for (int i = 0; i < n; i++) 
+    { 
+      emp[ i ].putData( ); 
+    } 
+  } 
+} 
+
+class Employee 
+{ 
+  int empid; 
+  String ename; 
+  String dept; 
+  double sal; 
+  public void getData( ) 
+  { 
+    Scanner sc = new Scanner(System.in); 
+    System.out.print("Enter employee ID is "); 
+    empid = sc.nextInt( ); 
+    sc.nextLine( );   
+    System.out.print("Enter employee name is "); 
+    ename = sc.nextLine( ); 
+    System.out.print("Enter department is "); 
+    dept = sc.nextLine( ); 
+    System.out.print("Enter salary is "); 
+    sal = sc.nextDouble( ); 
+  }
+  public void putData( ) 
+  { 
+    System.out.println("Details of employee are "); 
+    System.out.println("ID        : " + empid); 
+    System.out.println("Name      : " + ename); 
+    System.out.println("Department: " + dept); 
+    System.out.println("Salary    : " + sal); 
+  } 
+} 
