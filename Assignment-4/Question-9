@@ -1,0 +1,26 @@
+public class Driver 
+{  
+  public static void main(String[ ] args) 
+  {  
+    Point p1 = new Point(1, 2); Point p2 = new Point(4, 6); 
+    double dist = p1.distanceBetPoints(p2); 
+    System.out.println("Distance between two points is " + dist); 
+  }  
+} 
+
+class Point 
+{ 
+  double xCo; 
+  double yCo; 
+  public Point(double xCo, double yCo) 
+  { 
+    this.xCo = xCo; 
+    this.yCo = yCo; 
+  } 
+  public double distanceBetPoints(Point p) 
+  { 
+    double dx = this.xCo - p.xCo; 
+    double dy = this.yCo - p.yCo; 
+    return Math.sqrt(dx * dx + dy * dy); 
+  } 
+}  
