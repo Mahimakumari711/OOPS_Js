@@ -1,0 +1,43 @@
+public class Driver 
+{ 
+  public static void main(String[ ] args) 
+  { 
+    Complexnum c1 = new Complexnum(5, 3); 
+    Complexnum c2 = new Complexnum(2, -4); 
+    System.out.println("First complex number "); 
+    c1.display( ); 
+    System.out.println("Second complex number "); 
+    c2.display( ); 
+    Complexnum sum = c1.add(c2);  
+    System.out.println("Sum of complex numbers: "); 
+    sum.display( ); 
+  } 
+} 
+
+class Complexnum 
+{ 
+  int real; 
+  int img;  
+  public Complexnum(int real, int img) 
+  {
+    this.real = real; 
+    this.img = img; 
+  } 
+  public void display( ) 
+  { 
+    if (img >= 0) 
+    { 
+      System.out.println(real + " + " + img + "i"); 
+    }  
+    else 
+    { 
+      System.out.println(real + " - " + (-img) + "i"); 
+    } 
+  } 
+  public Complexnum add(Complexnum c) 
+  { 
+    int r = this.real + c.real; 
+    int i = this.img + c.img; 
+    return new Complexnum(r, i); 
+  } 
+} 
