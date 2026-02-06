@@ -1,0 +1,50 @@
+public class Driver 
+{ 
+  public static void main(String[ ] args) 
+  { 
+    Time t1 = new Time(12, 45, 55); 
+    Time t2 = new Time(3, 20, 15); 
+    System.out.println("First time "); 
+    t1.displayTime( ); 
+    System.out.println("Second time "); 
+    t2.displayTime( ); 
+    Time sum = t1.addTime(t2); 
+    System.out.println("Sum of times "); 
+    sum.displayTime( ); 
+  } 
+} 
+
+class Time 
+{ 
+  int hour; 
+  int minute; 
+  int second; 
+  public Time(int hour, int minute, int second) 
+  { 
+    this.hour = hour; 
+    this.minute = minute; 
+    this.second = second; 
+  } 
+  public void displayTime( ) 
+  { 
+    System.out.printf("%02d:%02d:%02d%n", hour, minute, second); 
+  } 
+  public Time addTime(Time t) 
+  { 
+    int s = this.second + t.second; 
+    int m = this.minute + t.minute; 
+    int h = this.hour + t.hour; 
+    if (s >= 60) 
+    { 
+      m += s / 60; 
+      s = s % 60; 
+    } 
+    if (m >= 60) 
+    { 
+      h += m / 60; 
+      m = m % 60; 
+    } 
+    h = h % 24; 
+    return new Time(h, m, s); 
+  } 
+}  
