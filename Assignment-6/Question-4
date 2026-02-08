@@ -1,0 +1,30 @@
+interface InterfaceA 
+{ 
+  void showA();
+}
+interface InterfaceB 
+{ 
+  void showB(); 
+} 
+
+class Child implements InterfaceA, InterfaceB 
+{ 
+  public void showA() 
+  { 
+    System.out.println("This is method from InterfaceA"); 
+  } 
+  public void showB() 
+  { 
+    System.out.println("This is method from InterfaceB"); 
+  } 
+} 
+
+public class Main 
+{ 
+  public static void main(String[] args) 
+  { 
+    Child obj = new Child(); 
+    obj.showA(); 
+    obj.showB(); 
+  } 
+} 
