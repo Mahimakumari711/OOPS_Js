@@ -1,0 +1,95 @@
+File 1 : Square  
+
+package org.shapes; 
+public class Square { 
+  private double side; 
+  public Square(double side) { 
+    this.side = side; 
+  } 
+  public double area() { 
+    return side * side; 
+  } 
+  public double perimeter() { 
+    return 4 * side; 
+  } 
+}
+
+File 2 : Circle  
+
+package org.shapes; 
+public class Circle { private double radius; 
+  public Circle(double radius) { 
+    this.radius = radius; 
+  } 
+  public double area() { 
+      return Math.PI * radius * radius; 
+  } 
+  public double perimeter() { 
+      return 2 * Math.PI * radius; 
+  } 
+}
+
+File 3 : Triangle  
+
+package org.shapes; 
+public class Triangle { private double a, b, c; 
+  public Triangle(double a, double b, double c) { 
+      this.a = a; 
+      this.b = b; 
+      this.c = c; 
+  } 
+ 
+  public double perimeter() { 
+      return a + b + c; 
+  }
+  public double area() { 
+      double s = perimeter() / 2; 
+      return Math.sqrt(s * (s - a) * (s - b) * (s - c)); 
+  } 
+} 
+
+File 4 : ShapeTest  
+
+import java.util.Scanner; 
+import org.shapes.Square; 
+import org.shapes.Circle; 
+import org.shapes.Triangle; 
+  
+public class ShapeTest { 
+    public static void main(String[] args) { 
+        Scanner sc = new Scanner(System.in); 
+        System.out.println("Choose a shape:"); 
+        System.out.println("1. Square"); 
+        System.out.println("2. Circle"); 
+        System.out.println("3. Triangle"); 
+        System.out.print("Enter choice: "); 
+        int choice = sc.nextInt(); 
+        switch (choice) { 
+            case 1: 
+                System.out.print("Enter side of square: "); 
+                double side = sc.nextDouble(); 
+                Square sq = new Square(side); 
+                System.out.println("Area of Square: " + sq.area()); 
+                System.out.println("Perimeter of Square: " + sq.perimeter());
+                break; 
+            case 2: 
+                System.out.print("Enter radius of circle: "); 
+                double radius = sc.nextDouble(); 
+                Circle c = new Circle(radius); 
+                System.out.println("Area of Circle: " + c.area()); 
+                System.out.println("Perimeter of Circle: " + c.perimeter()); 
+                break; 
+            case 3: 
+                System.out.print("Enter three sides of triangle: "); 
+                double a = sc.nextDouble(); 
+                double b = sc.nextDouble(); 
+                double c1 = sc.nextDouble(); 
+                Triangle t = new Triangle(a, b, c1); 
+                System.out.println("Area of Triangle: " + t.area()); 
+                System.out.println("Perimeter of Triangle: " + t.perimeter()); 
+                break; 
+            default: 
+                System.out.println("Invalid choice!"); 
+        } 
+    } 
+}
