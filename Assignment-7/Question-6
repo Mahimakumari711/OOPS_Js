@@ -1,0 +1,51 @@
+import java.util.InputMismatchException; 
+import java.util.Scanner; 
+class NegativeValueException extends Exception 
+{ 
+	public NegativeValueException(String message) 
+	{ 
+		super(message); 
+	} 
+} 
+
+public class Driver 
+{ 
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in); 
+		double feet = 0, inches = 0;
+		boolean validInput = false; 
+        System.out.println("Convert Length from Feet & Inches to Centimetres"); 
+        while (!validInput) 
+		{
+			try 
+			{ 
+				System.out.print("Enter length in feet: "); 
+                feet = sc.nextDouble(); 
+                System.out.print("Enter length in inches: "); 
+                inches = sc.nextDouble(); 
+                if (feet < 0 || inches < 0) 
+				{ 
+					throw new NegativeValueException("Negative values are not allowed. Enter a positive numbers."); 
+				} 
+                double totalInches = (feet * 12) + inches; 
+                double centimetres = totalInches * 2.54; 
+                System.out.printf("Equivalent length: %.2f cm%n", centimetres); 
+                validInput = true;   
+            } 
+			catch (InputMismatchException e) 
+			{
+				System.out.println("Error: Please enter numeric values only!"); 
+				sc.nextLine(); 
+			} 
+			catch (NegativeValueException e) 
+			{
+				System.out.println("Error: " + e.getMessage()); 
+			} 
+            if (!validInput) 
+			{ 
+				System.out.println("Please try again."); 
+			} 
+        } 
+    } 
+}
