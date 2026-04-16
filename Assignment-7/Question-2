@@ -1,0 +1,27 @@
+import java.util.Scanner; 
+class Driver 
+{ 
+	public static void main(String[] args) 
+	{ 
+		Scanner sc = new Scanner(System.in); 
+		double x, y, result; 
+		System.out.print("Enter value of x: "); 
+		x = sc.nextDouble(); 
+		System.out.print("Enter value of y: "); 
+		y = sc.nextDouble(); 
+		try 
+		{ 
+			if (x - y == 0) 
+			{ 
+				throw new ArithmeticException("Denominator (x - y) is zero."); 
+			} 
+			result = x / (x - y); 
+			System.out.println("Result of x / (x - y) = " + result); 
+		} 
+		catch (ArithmeticException e) 
+		{ 
+			System.out.println("Error: " + e.getMessage()); 
+			System.out.println("Division cannot be performed because (x - y) is zero."); 
+		}
+	}
+} 
