@@ -1,0 +1,63 @@
+class MinimumBalanceException extends Exception 
+{
+	public MinimumBalanceException(String message) 
+	{
+		super(message);
+	} 
+} 
+         
+class Account 
+{ 
+	String name; int acc_no; double balance; 
+	public Account(String name, int acc_no, double balance) 
+	{ 
+		this.name = name; 
+		this.acc_no = acc_no; 
+		this.balance = balance; 
+	} 
+	void deposit(double amt) 
+	{ 
+		balance += amt; 
+		System.out.println("Successfully deposited " + amt); 
+		System.out.println("Updated balance after deposite: " + balance); 
+	} 
+	void withdraw(double amt) throws MinimumBalanceException 
+	{ 
+		if (balance - amt < 500) 
+		{
+			throw new MinimumBalanceException("Withdrawal denied! Minimum balance of 500 must be maintained."); 
+    	}	  
+		else 
+		{ 
+			balance -= amt; 
+			System.out.println("Successfully withdrawn " + amt); 
+			System.out.println("Updated balance after withdraw: " + balance); 
+		} 
+	} 
+} 
+class BankApplication 
+{  
+	public static void main(String[] args) 
+	{  
+		Account acc1 = new Account("Rahul Sharma", 12345, 2000);  
+        System.out.println("Account created for " + acc1.name + " (A/C No: " + acc1.acc_no + ")"); 
+        System.out.println("Current balance: " + acc1.balance); 
+		acc1.deposit(1000); 
+        try 
+		{ 
+			acc1.withdraw(2300);   
+		} 
+		catch (MinimumBalanceException e) 
+		{ 
+			System.out.println("Exception: " + e.getMessage()); 
+        }
+		try 
+		{ 
+			acc1.withdraw(400);
+		} 
+		catch (MinimumBalanceException e) 
+		{
+			System.out.println("Exception: " + e.getMessage()); 
+		} 
+    } 
+}
