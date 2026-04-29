@@ -1,0 +1,34 @@
+class MyThread extends Thread { 
+  public void run() { 
+    System.out.println("Thread is running"); 
+    try 
+      { 
+        Thread.sleep(1000);  
+      } 
+    catch (InterruptedException e) 
+      { 
+        System.out.println("Thread interrupted!"); 
+      } 
+  } 
+} 
+
+class Driver{ 
+  public static void main(String[] args) { 
+    MyThread t1 = new MyThread(); 
+    t1.setName("MyCustomThread"); 
+    t1.start(); 
+    System.out.println("Thread Name: " + t1.getName()); 
+    System.out.println("Thread ID: " + t1.threadId()); 
+    System.out.println("Is thread alive : " + t1.isAlive()); 
+    
+    try 
+      { 
+        t1.join(); 
+      } 
+    catch (InterruptedException e) 
+      { 
+        e.printStackTrace(); 
+      } 
+    System.out.println("Is thread alive after completion : " + t1.isAlive()); 
+  } 
+} 
