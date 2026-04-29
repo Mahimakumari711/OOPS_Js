@@ -1,0 +1,10 @@
+class Driver {
+  public static void main(String[] args) { 
+    Thread currentThread = Thread.currentThread(); 
+    System.out.println("Thread Details are :"); 
+    System.out.println("Class Name: " + currentThread.getClass().getName()); 
+    System.out.println("Thread Name: " + currentThread.getName()); 
+    System.out.println("Priority: " + currentThread.getPriority()); 
+    System.out.println("Thread Group: " + currentThread.getThreadGroup().getName()); 
+  } 
+}
