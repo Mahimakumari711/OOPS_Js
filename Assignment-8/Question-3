@@ -1,0 +1,47 @@
+class ArmstrongChecker implements Runnable 
+{ 
+  private int number; 
+  ArmstrongChecker(int number) 
+  { 
+    this.number = number; 
+  } 
+  public void run() 
+  { 
+    int temp = number, digits = 0, sum = 0; 
+    while (temp > 0) 
+    { 
+      temp /= 10; 
+      digits++; 
+    } 
+    temp = number; 
+    while (temp > 0) 
+    { 
+      int digit = temp % 10; 
+      sum += java.lang.Math.pow(digit, digits); 
+      temp /= 10; 
+    } 
+    if (sum == number) 
+    { 
+      System.out.println(number + " is an Armstrong number."); 
+    } 
+    else 
+    { 
+      System.out.println(number + " is NOT an Armstrong number."); 
+    } 
+  } 
+} 
+
+class Driver
+{ 
+  public static void main(String[] args) 
+  { 
+    Scanner sc = new Scanner(System.in); 
+    System.out.print("Enter a number: "); 
+    int num = sc.nextInt(); 
+    ArmstrongChecker checker = new ArmstrongChecker(num); 
+    Thread t = new Thread(checker, "ArmstrongThread"); 
+    t.start(); 
+    System.out.println("Main thread: " + Thread.currentThread().getName()); 
+    System.out.println("Child thread started: " + t.getName()); 
+  } 
+} 
