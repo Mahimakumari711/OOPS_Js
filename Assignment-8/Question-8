@@ -1,0 +1,37 @@
+class FirstThread extends Thread { 
+  public void run() { 
+    System.out.println("Thread Name: " + getName()); 
+    System.out.println("Thread Priority: " + getPriority()); 
+    System.out.println("FirstThread is running\n"); 
+  } 
+}
+class SecondThread extends Thread { 
+  public void run() { 
+    System.out.println("\nThread Name: " + getName()); 
+    System.out.println("Thread Priority: " + getPriority()); 
+    System.out.println("SecondThread is running\n"); 
+  } 
+} 
+public class Driver { 
+  public static void main(String[] args) { 
+    FirstThread t1 = new FirstThread(); 
+    SecondThread t2 = new SecondThread(); 
+    t1.setName("High Priority Thread"); 
+    t2.setName("Low Priority Thread"); 
+    t1.setPriority(Thread.MAX_PRIORITY);  
+    t2.setPriority(Thread.MIN_PRIORITY);  
+    System.out.println("Enter Thread Priority"); 
+    System.out.println(t1.getName() + " Priority: " + t1.getPriority()); 
+    System.out.println(t2.getName() + " Priority: " + t2.getPriority()); 
+    t1.start(); 
+    t2.start(); 
+    try { 
+      t1.join(); 
+      t2.join(); 
+    } 
+    catch (InterruptedException e) { 
+      e.printStackTrace(); 
+    } 
+    System.out.println("Main thread: Both threads are completed"); 
+  } 
+} 
