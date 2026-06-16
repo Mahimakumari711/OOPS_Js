@@ -1,0 +1,56 @@
+import java.util.Scanner; 
+class OddThread extends Thread {
+  private int m, n; 
+  OddThread(int m, int n) { 
+    this.m = m; 
+    this.n = n; 
+  } 
+  public void run() { 
+    System.out.println("Child Thread : Odd Numbers "); 
+    for (int i = m; i <= n; i++) { 
+      if (i % 2 != 0) { 
+        System.out.print(i + " "); 
+        try { 
+          Thread.sleep(100);  
+        } 
+        catch (InterruptedException e) { 
+          e.printStackTrace(); 
+        } 
+      } 
+    } 
+    System.out.println("\nChild Thread completed."); 
+  } 
+} 
+public class Driver { 
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in); 
+    System.out.println("Enter the upper limit of range : "); 
+    int m = sc.nextInt(); 
+    System.out.println("Enter the lower limit of range : "); 
+    int n = sc.nextInt(); 
+    OddThread oddThread = new OddThread(m, n); 
+    oddThread.setName("OddThread"); 
+    oddThread.start(); 
+    System.out.println("Main Thread : Even Numbers"); 
+    for (int i = m; i <= n; i++) {
+      if (i % 2 == 0) { 
+        System.out.print(i + " "); 
+        try { 
+          oddThread.join(); 
+          Thread.sleep(100);  
+        } 
+        catch (InterruptedException e) { 
+          e.printStackTrace(); 
+        } 
+      } 
+    } 
+    System.out.println("\nMain Thread completed."); 
+    try { 
+      oddThread.join(); 
+    } 
+    catch (InterruptedException e) { 
+      e.printStackTrace(); 
+    } 
+    System.out.println("Both threads finished"); 
+  } 
+} 
