@@ -1,0 +1,62 @@
+import java.util.Scanner; 
+class MultThread extends Thread { 
+  private int number; 
+  MultThread(int number) { 
+    this.number = number; 
+  } 
+  public void run() { 
+    System.out.println("Multipication Thread:"); 
+    System.out.println("Multiplication Table of " + number); 
+    for (int i = 1; i <= 10; i++) { 
+      System.out.print((number * i)+ " "); 
+      try { 
+        Thread.sleep(100);  
+      } 
+      catch (InterruptedException e) {
+        e.printStackTrace(); 
+      } 
+    } 
+    System.out.println("\nMultiplication Thread completed.\n"); 
+  } 
+} 
+class FactorialThread extends Thread { 
+  private int number; 
+  FactorialThread(int number) { 
+    this.number = number;         
+  } 
+  public void run() { 
+    long fact = 1; 
+    for (int i = 1; i <= number; i++) { 
+      fact *= i; 
+      try { 
+        Thread.sleep(50);  
+      } 
+      catch (InterruptedException e) { 
+        e.printStackTrace(); 
+      } 
+    } 
+    System.out.println(); 
+    System.out.println("FactorialThread:"); 
+    System.out.println("Factorial of " + number + " is " + fact); 
+    System.out.println("FactorialThread completed.\n"); 
+  } 
+} 
+public class Driver { 
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in); 
+    System.out.print("Enter a number: "); 
+    int num = sc.nextInt();
+    MultThread t1 = new MultThread(num); 
+    FactorialThread t2 = new FactorialThread(num); 
+    t1.start(); 
+    t2.start(); 
+    try { 
+      t1.join(); 
+      t2.join(); 
+    } 
+    catch (InterruptedException e) { 
+      e.printStackTrace(); 
+    } 
+    System.out.println("Main thread: Both threads are completed"); 
+  } 
+}
