@@ -1,0 +1,56 @@
+import java.util.Scanner; 
+class SharedSum { 
+  long sum = 0;  
+} 
+class SumThread extends Thread { 
+  private int start, end; 
+  private SharedSum shared; 
+  SumThread(int start, int end, SharedSum shared) { 
+    this.start = start; 
+    this.end = end; 
+    this.shared = shared; 
+  } 
+  public void run() { 
+    long localSum = 0; 
+    for (int i = start; i <= end; i++) { 
+      localSum += i;
+    } 
+    synchronized (shared) { 
+      shared.sum += localSum; 
+      System.out.println(Thread.currentThread().getName() + " added its partial sum (" + localSum + ") to global sum. Current total:" + shared.sum); 
+    } 
+  } 
+} 
+public class Driver { 
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in); 
+    System.out.print("Enter value of n (number up to which to sum): "); 
+    int n = sc.nextInt(); 
+    System.out.print("Enter number of threads (m): "); 
+    int m = sc.nextInt(); 
+    SharedSum shared = new SharedSum(); 
+    int chunkSize = n / m; 
+    int remainder = n % m; 
+    SumThread[] threads = new SumThread[m]; 
+    int start = 1; 
+    for (int i = 0; i < m; i++) { 
+      int end = start + chunkSize - 1;
+      if (i == m - 1) { 
+        end += remainder;  
+      } 
+      threads[i] = new SumThread(start, end, shared); 
+      threads[i].setName("Thread-" + (i + 1)); 
+      threads[i].start(); 
+      start = end + 1; 
+    } 
+    for (int i = 0; i < m; i++) { 
+      try { 
+        threads[i].join(); 
+      } 
+      catch (InterruptedException e) { 
+        e.printStackTrace(); 
+      } 
+    } 
+    System.out.println("\nFinal Sum of first " + n + " natural numbers = " + shared.sum); 
+  } 
+} 
