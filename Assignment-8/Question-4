@@ -1,0 +1,57 @@
+import java.util.Scanner; 
+class PalindromeThread extends Thread { 
+  private int number; 
+  PalindromeThread(int number) { 
+    this.number = number; 
+  } 
+  public void run() { 
+    int original = number; 
+    int reversed = 0; 
+    while (number > 0) { 
+      int digit = number % 10; 
+      reversed = reversed * 10 + digit; 
+      number /= 10; 
+    } 
+    if (original == reversed) { 
+      System.out.println("PalindromeThread: " + original + " is a Palindrome number."); 
+    } 
+    else { 
+      System.out.println("PalindromeThread: " + original + " is NOT a Palindrome number."); 
+    } 
+  } 
+} 
+class Driver { 
+  public static void main(String[] args) { 
+    Scanner sc = new Scanner(System.in); 
+    System.out.print("Enter a number: "); 
+    int num = sc.nextInt(); 
+    PalindromeThread pThread = new PalindromeThread(num); 
+    pThread.setName("PalindromeThread"); 
+    pThread.start(); 
+    boolean isPrime = true;
+    if (num <= 1) { 
+      isPrime = false; 
+    } 
+    else { 
+      for (int i = 2; i <= num / 2; i++) { 
+        if (num % i == 0) { 
+          isPrime = false; 
+          break; 
+        } 
+      } 
+    } 
+    if (isPrime) { 
+      System.out.println("MainThread: " + num + " is a Prime number."); 
+    } 
+    else { 
+      System.out.println("MainThread: " + num + " is a Composite number."); 
+    } 
+    try { 
+      pThread.join(); 
+    } 
+    catch (InterruptedException e) { 
+      e.printStackTrace();
+    } 
+    System.out.println("Both checks are completed."); 
+  } 
+}
