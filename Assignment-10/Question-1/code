@@ -1,0 +1,46 @@
+import java.awt.*; 
+import java.awt.event.*; 
+public class Assignment1 { 
+public static void main(String[] args) 
+{ 
+  Frame frame = new Frame("Assignment-1"); 
+  Button b1 = new Button("Red");  
+  Button b2 = new Button("Green"); 
+  Button b3 = new Button("Blue"); 
+  
+  b1.setBounds(50, 80, 80, 40);  
+  b2.setBounds(150, 80, 80, 40);  
+  b3.setBounds(260, 80, 80, 40); 
+  
+  b1.addActionListener(new ActionListener() {  
+    public void actionPerformed(ActionEvent e) 
+    { 
+      frame.setBackground(Color.RED); 
+    } 
+  }); 
+  
+  b2.addActionListener(new ActionListener() {  
+    public void actionPerformed(ActionEvent e) 
+    { 
+      frame.setBackground(Color.GREEN); 
+    } 
+  }); 
+  
+  b3.addActionListener(new ActionListener() {  
+    public void actionPerformed(ActionEvent e) { 
+      frame.setBackground(Color.BLUE); 
+    } 
+  }); 
+  frame.addWindowListener(new WindowAdapter() { 
+    public void windowClosing(WindowEvent e) { 
+      System.exit(0); 
+    }
+    frame.add(b1); 
+    frame.add(b2); 
+    frame.add(b3); 
+    frame.setBackground(Color.LIGHT_GRAY); 
+    frame.setSize(400, 300); 
+    frame.setLayout(null); 
+    frame.setVisible(true); 
+  } 
+} 
